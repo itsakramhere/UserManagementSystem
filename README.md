@@ -3,7 +3,7 @@ Before Running your Application Follow this
 
 1.Use SQL server and create required table , below are the query.
 
-2.Update application setting with your local server name and database name 
+2.Update appsetting.json with your local server name and database name 
 
 <code>	
 Create Database GleasonWebAppDB
