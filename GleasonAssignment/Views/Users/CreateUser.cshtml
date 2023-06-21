@@ -1,0 +1,76 @@
+﻿@model GleasonAssignment.Models.UserFormModel
+
+@{
+    ViewData["Title"] = "CreateUser";
+}
+<script type="text/javascript">
+    function ResetForm() {
+        var element = document.getElementById("create_form_id");
+        element.reset()
+    }
+</script>
+<h3> Add New User</h3>
+<form asp-action="CreateUser" id="create_form_id">
+
+    <div class="row">
+
+        <div class="col-md-4">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label required">Username</label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label required">Email</label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label required">First Name</label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label required">Last Name</label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsTrailUser" />Trail User
+                </label>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label required">Password</label>
+                <input asp-for="Password" type="password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Roles" class="control-label">Roles</label>
+                @foreach (var item in ViewBag.Roles)
+                {
+                    <div>
+                        <input name="selectedItems" value="@item.ID" type="checkbox" asp-for="Roles" class="form-check-input" />
+                        <span>@item.RoleName</span>
+                    </div>
+                }
+            </div>
+        </div>
+        <br>
+        <div class="float-end">
+            <input type="submit" value="ADD" class="btn btn-outline-primary" />
+            <input type="submit" value="Reset" class="btn btn-outline-primary" onclick="ResetForm()" />
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

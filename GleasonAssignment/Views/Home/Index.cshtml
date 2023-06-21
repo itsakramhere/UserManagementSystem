@@ -1,0 +1,34 @@
+﻿@model GleasonAssignment.Models.UserFormModel
+@{
+    ViewData["Title"] = "Login";
+}
+<div class="row justify-content-center">
+    <div class="col-4">
+        <section>
+            <form id="account" method="post">
+                <p class="font-weight-bold text-center">GEMS Cloud Web Application</p>
+                <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                <div class="form-floating mb-4">
+                    <input asp-for="UserName" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                    <label asp-for="UserName" class="form-label">Username</label>
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+                <div class="form-floating mb-4">
+                    <input asp-for="Password" type="password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="password" />
+                    <label asp-for="Password" class="form-label">Password</label>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div>
+                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Sign in</button>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <a href="#">Forgot Password</a>
+                </div>
+
+            </form>
+        </section>
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<GleasonAssignment.Models.UserFormModel>
+
+@{
+    ViewData["Title"] = "User Management";
+}
+
+<h1>User Management</h1>
+<hr />
+<p class="float-end">
+    <a asp-action="CreateUser" asp-controller="Users" class="btn btn-outline-primary">Add New User</a>
+</p>
+<table id="dtOrderExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th class="th-sm">
+                User
+            </th>
+            <th class="th-sm">
+                Email Address
+            </th>
+            <th class="th-sm">
+                Roles
+            </th>
+            <th class="th-sm">
+                Trail User
+            </th>
+            <th class="th-sm">
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @item.Email
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Roles)
+            </td>
+            <td>
+                @(item.IsTrailUser ? "Yes":"No")
+            </td>
+
+            <td>
+                    <a asp-action="Details" asp-route-id="@item.ID"><img src="~/images/icons8-view-30.png" alt="Details" /></a>
+                    <a asp-action="Edit" asp-route-id="@item.ID"><img src="~/images/icons8-edit.svg" alt="Edit" /></a>
+                    <a asp-action="Delete" asp-route-id="@item.ID" onclick="return confirm('Are you sure want to delete this record?')"><img src="~/images/icons8-delete.svg" alt="Delete" /></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
