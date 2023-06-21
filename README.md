@@ -1,5 +1,5 @@
 # UserManagementSystem
-Before Running your Application Follow this
+Follow this step first
 
 1.Use SQL server and create required table , below are the query.
 
